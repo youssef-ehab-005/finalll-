@@ -1,0 +1,20 @@
+# دليل رفع Off Track على GitHub
+
+1. فك ضغط ملف ZIP.
+2. افتح المجلد الذي يحتوي مباشرة على `package.json`.
+3. ارفع **كل محتويات هذا المجلد** إلى جذر مستودع GitHub (وليس ملف ZIP نفسه، ولا المجلد الأب).
+4. لا ترفع ملف `.env` الحقيقي. ارفع `.env.example` فقط.
+5. بعد الرفع، تأكد أن `package.json` ظاهر في الصفحة الرئيسية للمستودع.
+
+## إعداد متغيرات البيئة
+في Vercel أضف:
+- `VITE_SUPABASE_URL`: رابط مشروع Supabase.
+- `VITE_SUPABASE_PUBLISHABLE_KEY`: مفتاح Publishable الخاص بالمشروع.
+
+لا تستخدم `service_role` أو `sb_secret` في متغير يبدأ بـ `VITE_`، ولا تنشره على GitHub.
+
+## تنبيه قبل استقبال العملاء
+رفع GitHub وحده لا يجعل المتجر جاهزًا للبيع. يجب إعداد Supabase، تطبيق migrations المناسبة، إعداد Storage وسياسات RLS، واختبار إنشاء الطلبات والدفع والشحن قبل فتح الموقع للعملاء.
+
+## تسجيل الدخول بحساب Google
+تم استبدال تكامل تسجيل الدخول الخاص بالمنصة بتكامل Supabase Auth مباشرة. من لوحة Supabase افتح Authentication ثم Sign In / Providers وفعّل Google وأدخل بيانات OAuth الخاصة بتطبيقك. أضف رابط الموقع المنشور إلى Site URL وRedirect URLs في إعدادات Auth.

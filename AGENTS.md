@@ -1,0 +1,1 @@
+# Project guidance\n\nUse the existing React, TanStack Start, Vite, Tailwind CSS, and Supabase architecture. Keep secrets out of source control.\n
